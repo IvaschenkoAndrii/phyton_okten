@@ -26,7 +26,7 @@ add, all = notebook()
 # expanded_form(42) # return '40 + 2'
 # expanded_form(70304) # return '70000 + 300 + 4'
 
-def expanded_form(a: int) -> list:
+def expanded_form(a: int) -> str:
     b = list(str(a))
     res = [c for c in b]
     i = 0
@@ -35,9 +35,7 @@ def expanded_form(a: int) -> list:
         res[i] = res[i] + '0' * (l - 1)
         l = l - 1
         i = i + 1
-        print(l)
     res = '+'.join(res)
     return res
 
-
-print(expanded_form(21342332535))
+print(expanded_form(233))
