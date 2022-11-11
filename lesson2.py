@@ -32,10 +32,16 @@ def expanded_form(a: int) -> str:
     i = 0
     l = len(res)
     while i < l+i:
-        res[i] = res[i] + '0' * (l - 1)
+        if res[i] != '0':
+            res[i] = res[i] + '0' * (l - 1)
+        else:
+            res[i]=' '
+
         l = l - 1
         i = i + 1
+
     res = '+'.join(res)
+    res=res.replace('+ ','')
     return res
 
-print(expanded_form(233))
+print(expanded_form(403053))
