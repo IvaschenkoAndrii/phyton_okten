@@ -31,17 +31,18 @@ def expanded_form(a: int) -> str:
     res = [c for c in b]
     i = 0
     l = len(res)
-    while i < l+i:
+    while i < l + i:
         if res[i] != '0':
             res[i] = res[i] + '0' * (l - 1)
         else:
-            res[i]=' '
+            res[i] = ' '
 
         l = l - 1
         i = i + 1
 
     res = '+'.join(res)
-    res=res.replace('+ ','')
+    res = res.replace('+ ', '')
     return res
+
 
 print(expanded_form(403053))
