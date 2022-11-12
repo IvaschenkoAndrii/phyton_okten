@@ -26,6 +26,21 @@ add, all = notebook()
 # expanded_form(42) # return '40 + 2'
 # expanded_form(70304) # return '70000 + 300 + 4'
 
+
+def counter(func):
+    counter = 0
+
+    def inner(*args, **kwargs):
+        nonlocal counter
+        counter = counter + 1
+        print(f'Функция вызвана {counter} раз')
+        print('*' * 20)
+        res=func(*args, **kwargs)
+        return res
+    return inner
+
+
+@counter
 def expanded_form(a: int) -> str:
     b = list(str(a))
     res = [c for c in b]
@@ -40,9 +55,26 @@ def expanded_form(a: int) -> str:
         l = l - 1
         i = i + 1
 
-    res = '+'.join(res)
-    res = res.replace('+ ', '')
-    return res
+    return '+'.join(res).replace('+ ', '')
 
 
-print(expanded_form(403053))
+@counter
+def hello(name):
+    print(f'Hello {name}')
+
+
+@counter
+def foo():
+    return (5)
+
+
+print(expanded_form(12312))
+print(expanded_form(4070))
+print(expanded_form(400899))
+print(expanded_form(12))
+
+hello('max')
+hello('max')
+hello('max')
+hello('max')
+hello('max')
