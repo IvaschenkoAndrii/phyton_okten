@@ -82,7 +82,10 @@ class Prince(Human):
             if cindirellas[i].foot_size == self.shoe_size:
                 res.append(cindirellas[i].name)
 
-        return (f"Список подходящих принцесс - {', '.join(res)}")
+        if len(res) != 0:
+            return (f"Список подходящих принцесс - {', '.join(res)}")
+        else:
+            return ('Нет подходящих принцесс')
 
 
 
@@ -92,7 +95,7 @@ cindirellas = [Cindirella('s', 33, 33), Cindirella('a', 33, 38), Cindirella('kat
 
 print(p.search(cindirellas))
 
-#
+
 # 1) Створити абстрактний клас Printable який буде описувати абстрактний метод print()
 # 2) Створити класи Book та Magazine в кожного в конструкторі змінна name, та який наслідуются від класу Printable
 # 3) Створити клас Main в якому буде:
@@ -101,3 +104,5 @@ print(p.search(cindirellas))
 # або Magazine инакше ігрнорувати додавання
 # - метод show_all_magazines який буде виводити всі журнали викликаючи метод print абстрактного классу
 # - метод show_all_books який буде виводити всі книги викликаючи метод print абстрактного классу
+
+
