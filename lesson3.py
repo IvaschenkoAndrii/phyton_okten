@@ -77,10 +77,11 @@ class Prince(Human):
         self.shoe_size = shoe_size
 
     def search(self, cindirellas):
-           if cindirellas.foot_size==self.shoe_size:
-               return (f'Имя принцессы {cindirellas.name}')
-           else:
-                return ('Не та золушка')
+            for i in range(len(cindirellas)):
+                if cindirellas[i].foot_size==self.shoe_size:
+                    return (f'Имя принцессы {cindirellas[i].name}')
+                # else:
+                #     return ('Не та золушка')
 
 
 
@@ -88,7 +89,10 @@ p=Prince('s',22,33)
 c=Cindirella('s',33,34)
 v=Cindirella('s',33,33)
 
-print(p.search(v))
+cindirellas=[Cindirella('s',33,36),Cindirella('a',33,33)]
+# print(cindirellas.name)
+
+print(p.search(cindirellas))
 
 
 
