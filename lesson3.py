@@ -58,12 +58,6 @@ class Human:
         self.name = name
 
 
-class Prince(Human):
-    def __init__(self, name, age, shoe_size):
-        super().__init__(name, age)
-        self.shoe_size = shoe_size
-
-
 class Cindirella(Human):
     count = 0
 
@@ -75,5 +69,29 @@ class Cindirella(Human):
     @classmethod
     def get_count(cls):
         print(cls.count)
+
+
+class Prince(Human):
+    def __init__(self, name, age, shoe_size):
+        super().__init__(name, age)
+        self.shoe_size = shoe_size
+
+    def search(self, cindirellas):
+           if cindirellas.foot_size==self.shoe_size:
+               return (f'Имя принцессы {cindirellas.name}')
+           else:
+                return ('Не та золушка')
+
+
+
+p=Prince('s',22,33)
+c=Cindirella('s',33,34)
+v=Cindirella('s',33,33)
+
+print(p.search(v))
+
+
+
+
 
 
