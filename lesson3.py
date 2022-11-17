@@ -64,7 +64,7 @@ class Cindirella(Human):
     def __init__(self, name, age, foot_size):
         super().__init__(name, age)
         self.foot_size = foot_size
-        Cindirella.count = Cindirella.count+1
+        Cindirella.count = Cindirella.count + 1
 
     @classmethod
     def get_count(cls):
@@ -77,25 +77,29 @@ class Prince(Human):
         self.shoe_size = shoe_size
 
     def search(self, cindirellas):
-            for i in range(len(cindirellas)):
-                if cindirellas[i].foot_size==self.shoe_size:
-                    return (f'Имя принцессы {cindirellas[i].name}')
-                # else:
-                #     return ('Не та золушка')
+        res = []
+        for i in range(len(cindirellas)):
+            if cindirellas[i].foot_size == self.shoe_size:
+                res.append(cindirellas[i].name)
+
+        return (f"Список подходящих принцесс - {', '.join(res)}")
 
 
 
-p=Prince('s',22,33)
-c=Cindirella('s',33,34)
-v=Cindirella('s',33,33)
-
-cindirellas=[Cindirella('s',33,36),Cindirella('a',33,33)]
-# print(cindirellas.name)
+p = Prince('s', 22, 33)
+# c=Cindirella('s',33,34)
+# v=Cindirella('s',33,33)
+#
+cindirellas = [Cindirella('s', 33, 33), Cindirella('a', 33, 38), Cindirella('katya', 33, 33)]
 
 print(p.search(cindirellas))
 
-
-
-
-
-
+#
+# 1) Створити абстрактний клас Printable який буде описувати абстрактний метод print()
+# 2) Створити класи Book та Magazine в кожного в конструкторі змінна name, та який наслідуются від класу Printable
+# 3) Створити клас Main в якому буде:
+# - змінна класу printable_list яка буде зберігати книжки та журнали
+# - метод add за допомогою якого можна додавати екземпляри класів в список і робити перевірку чи то що передають є класом Book
+# або Magazine инакше ігрнорувати додавання
+# - метод show_all_magazines який буде виводити всі журнали викликаючи метод print абстрактного классу
+# - метод show_all_books який буде виводити всі книги викликаючи метод print абстрактного классу
