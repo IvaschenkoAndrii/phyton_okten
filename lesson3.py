@@ -86,10 +86,8 @@ class Prince(Human):
 
 
 
-p = Prince('s', 22, 33)
-# c=Cindirella('s',33,34)
-# v=Cindirella('s',33,33)
-#
+p = Prince('s', 22, 38)
+
 cindirellas = [Cindirella('s', 33, 33), Cindirella('a', 33, 38), Cindirella('katya', 33, 33)]
 
 print(p.search(cindirellas))
