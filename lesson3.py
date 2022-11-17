@@ -84,16 +84,15 @@ class Prince(Human):
 
         if len(res) != 0:
             return (f"Список подходящих принцесс - {', '.join(res)}")
-        else:
-            return ('Нет подходящих принцесс')
+        return ('Нет подходящих принцесс')
 
 
 #
-# p = Prince('s', 22, 38)
-#
-# cindirellas = [Cindirella('s', 33, 33), Cindirella('a', 33, 38), Cindirella('katya', 33, 33)]
-#
-# print(p.search(cindirellas))
+p = Prince('s', 22, 38)
+
+cindirellas = [Cindirella('s', 33, 33), Cindirella('a', 33, 34), Cindirella('katya', 33, 33)]
+
+print(p.search(cindirellas))
 
 # 1) Створити абстрактний клас Printable який буде описувати абстрактний метод print()
 # 2) Створити класи Book та Magazine в кожного в конструкторі змінна name, та який наслідуются від класу Printable
@@ -108,52 +107,49 @@ class Prince(Human):
 from abc import ABC, abstractmethod
 
 
-class Printable(ABC):
+from abc import ABC, abstractmethod
 
+
+class Printable(ABC):
     @abstractmethod
     def print(self):
         pass
 
 
 class Book(Printable):
-    def print(self):
-        pass
-
     def __init__(self, name):
-        print(name)
+        self.name = name
+
+    def print(self):
+        print(self.name)
 
 
 class Magazine(Printable):
-    def print(self):
-        pass
-
     def __init__(self, name):
-        print(name)
+        self.name = name
 
-
-class Main(Printable):
     def print(self):
-        pass
-
-    printable_list_books = []
-    printable_list_magazines = []
-
-    def add(self, book_or_magazine):
-        if isinstance(book_or_magazine, Magazine):
-            self.printable_list_magazines.append(book_or_magazine)
-        elif isinstance(book_or_magazine, Book):
-            self.printable_list_books.append(book_or_magazine)
-
-    def get_books(self):
-        return self.printable_list_books
-
-    def get_magazines(self):
-        return self.printable_list_magazines
+        print(self.name)
 
 
-c = Main()
+class Main:
+    printable_list: list[Book | Magazine] = []
 
-c.add(Book('aaaa'))
-c.add(Book('bbb'))
+    @classmethod
+    def add(cls, item: Book | Magazine):
+        if isinstance(item, (Book, Magazine)):
+            cls.printable_list.append(item)
 
-print(c.get_books())
+    @classmethod
+    def show_all_magazines(cls):
+        for item in cls.printable_list:
+            if isinstance(item, Magazine):
+                item.print()
+
+    @classmethod
+    def show_all_books(cls):
+        for item in cls.printable_list:
+            if isinstance(item, Book):
+                item.print()
+
+
