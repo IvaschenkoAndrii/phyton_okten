@@ -88,13 +88,12 @@ class Prince(Human):
             return ('Нет подходящих принцесс')
 
 
-
-p = Prince('s', 22, 38)
-
-cindirellas = [Cindirella('s', 33, 33), Cindirella('a', 33, 38), Cindirella('katya', 33, 33)]
-
-print(p.search(cindirellas))
-
+#
+# p = Prince('s', 22, 38)
+#
+# cindirellas = [Cindirella('s', 33, 33), Cindirella('a', 33, 38), Cindirella('katya', 33, 33)]
+#
+# print(p.search(cindirellas))
 
 # 1) Створити абстрактний клас Printable який буде описувати абстрактний метод print()
 # 2) Створити класи Book та Magazine в кожного в конструкторі змінна name, та який наслідуются від класу Printable
@@ -106,3 +105,55 @@ print(p.search(cindirellas))
 # - метод show_all_books який буде виводити всі книги викликаючи метод print абстрактного классу
 
 
+from abc import ABC, abstractmethod
+
+
+class Printable(ABC):
+
+    @abstractmethod
+    def print(self):
+        pass
+
+
+class Book(Printable):
+    def print(self):
+        pass
+
+    def __init__(self, name):
+        print(name)
+
+
+class Magazine(Printable):
+    def print(self):
+        pass
+
+    def __init__(self, name):
+        print(name)
+
+
+class Main(Printable):
+    def print(self):
+        pass
+
+    printable_list_books = []
+    printable_list_magazines = []
+
+    def add(self, book_or_magazine):
+        if isinstance(book_or_magazine, Magazine):
+            self.printable_list_magazines.append(book_or_magazine)
+        elif isinstance(book_or_magazine, Book):
+            self.printable_list_books.append(book_or_magazine)
+
+    def get_books(self):
+        return self.printable_list_books
+
+    def get_magazines(self):
+        return self.printable_list_magazines
+
+
+c = Main()
+
+c.add(Book('aaaa'))
+c.add(Book('bbb'))
+
+print(c.get_books())
