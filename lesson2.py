@@ -57,6 +57,10 @@ def expanded_form(a: int) -> str:
 
     return '+'.join(res).replace('+ ', '')
 
+# def expanded_form(num: int) -> str:
+#     st = str(num)
+#     return ' + '.join(ch + '0' * (len(st) - i - 1) for i, ch in enumerate(st) if ch != '0')
+
 
 @counter
 def hello(name):
