@@ -15,8 +15,13 @@ def notebook() -> list:
     return [add_todo, all_todo]
 
 
+
 add, all = notebook()
 
+add('qwd')
+add('qwd')
+
+print(all())
 
 # 3) створити функцію котра буде повертати сумму розрядів числа у вигляді строки (також використовуемо типізацію)
 #
@@ -72,13 +77,13 @@ def foo():
     return (5)
 
 
-print(expanded_form(12312))
-print(expanded_form(4070))
-print(expanded_form(400899))
-print(expanded_form(12))
-
-hello('max')
-hello('max')
-hello('max')
-hello('max')
-hello('max')
+# print(expanded_form(12312))
+# print(expanded_form(4070))
+# print(expanded_form(400899))
+# print(expanded_form(12))
+#
+# hello('max')
+# hello('max')
+# hello('max')
+# hello('max')
+# hello('max')
