@@ -52,16 +52,19 @@ def notes():
 
     def most_expensive():
         for i in range(len(data)):
-            m=data[i]["price"]
-            if data[i]["price"]>m:
+            m = data[0]["price"]
+            if data[i]["price"] > m:
                 m = data[i]["price"]
-            print(f'{data[i]["id"]} {data[i]["name"]} {data[i]["price"]}')
+        print(m)
+
+    def delete_purchase(id):
+        del data[id]
+        return delete_purchase
+
+    return [add_purchase, all_purchases, most_expensive, delete_purchase]
 
 
-    return [add_purchase, all_purchases, most_expensive]
-
-
-add, all, expensive = notes()
+add, all, expensive, delete = notes()
 
 while True:
     print('1. Добавить в список ')
@@ -90,6 +93,11 @@ while True:
     match choice:
         case '4':
             expensive()
+
+    match choice:
+        case '5':
+            id=int(input('Введите номер покупки '))
+            delete(id)
 
     match choice:
         case '6':
