@@ -32,6 +32,7 @@ def notes():
         nonlocal data
         data.append(purchase)
 
+
         try:
             with open('purchases.json', 'w') as file:
                 json.dump(data, file)
