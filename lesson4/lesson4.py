@@ -37,8 +37,8 @@ def notes():
         try:
             with open('purchases.json', 'w') as file:
                 json.dump(data, file)
-        except (Exception,):
-            pass
+        except Exception as err:
+            print(err)
         return add_purchase
 
     def all_purchases():
@@ -47,8 +47,8 @@ def notes():
                 purchase: Purchase = json.load(file)
                 for i in range(len(data)):
                     print(f'{data[i]["id"]}.  {data[i]["name"]} цена - {data[i]["price"]}')
-        except (Exception,):
-            pass
+        except Exception as err:
+            print(err)
 
     def find_purchase(field):
         for i in range(len(data)):
@@ -65,13 +65,18 @@ def notes():
                 print('Ничего не найдено')
 
     def most_expensive():
-        m = data[0]['price']
-        res={}
-        for i in range(len(data)):
-            if data[i]['price'] > m:
-                m = data[i]['price']
-                res=data[i]
-        print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
+
+        try:
+            m = data[0]['price']
+            res={}
+            for i in range(len(data)):
+                if data[i]['price'] > m:
+                    m = data[i]['price']
+                    res=data[i]
+            print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
+        except Exception as err:
+            print('Введите еще оду покупку')
+
 
 
     def delete_purchase(id):
@@ -84,6 +89,7 @@ def notes():
 add, all, expensive, delete, find = notes()
 
 while True:
+    print('-'*70)
     print('1. Добавить в список ')
     print('2. Посмотреть все ')
     print('3. Поиск покупки ')
