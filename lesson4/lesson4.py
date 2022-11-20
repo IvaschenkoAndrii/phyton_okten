@@ -26,10 +26,11 @@ Purchase = TypedDict('Purchase', {'id': str, 'name': str, 'price': str})
 
 g = (i for i in range(5000000000))
 
-def notes():
-    data=[]
 
-    def add_purchase(purchase:Purchase):
+def notes():
+    data = []
+
+    def add_purchase(purchase: Purchase):
         nonlocal data
         data.append(purchase)
 
@@ -43,16 +44,24 @@ def notes():
     def all_purchases():
         try:
             with open('purchases.json', 'r') as file:
-                purchase:Purchase=json.load(file)
-                for i in range (len(data)):
+                purchase: Purchase = json.load(file)
+                for i in range(len(data)):
                     print(f'{data[i]["id"]} {data[i]["name"]} {data[i]["price"]}')
         except (Exception,):
             pass
-        # return all_purchases
 
-    return [add_purchase,all_purchases]
+    def most_expensive():
+        for i in range(len(data)):
+            m=data[i]["price"]
+            if data[i]["price"]>m:
+                m = data[i]["price"]
+        print(f'{data[i]["id"]} {data[i]["name"]} {data[i]["price"]}')
 
-add, all=notes()
+
+    return [add_purchase, all_purchases, most_expensive]
+
+
+add, all, expensive = notes()
 
 while True:
     print('1. Добавить в список ')
@@ -60,18 +69,25 @@ while True:
     print('3. Поиск покупки ')
     print('4. Самая дорогая покупка ')
     print('5. Удалить покупку по номеру ')
-    print('9. Вихід')
+    print('6. Вихід')
     choice = input('Сделайте выбор: ')
 
     match choice:
         case '1':
-            id= str(next(g))
-            name=input('Введите название ')
-            price=input('Введите цену ')
-            purchase:Purchase={'id':id,'name':name,'price':price}
+            id = str(next(g))
+            name = input('Введите название ')
+            price = int(input('Введите цену '))
+            purchase: Purchase = {'id': id, 'name': name, 'price': price}
             add(purchase)
 
     match choice:
         case '2':
             all()
 
+    match choice:
+        case '4':
+            expensive()
+
+    match choice:
+        case '6':
+            break
