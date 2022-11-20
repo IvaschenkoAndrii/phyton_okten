@@ -79,12 +79,14 @@ def notes():
 
 
     def delete_purchase(id):
-        del data[id-1]
         try:
+            for i in range(len(data)):
+                if str(id) == data[i-1]['id']:
+                    del data[id-1]
             with open('purchases.json', 'w') as file:
                 json.dump(data, file)
         except Exception as err:
-            print(err)
+            print('Нет такого номера')
         return delete_purchase
 
     return [add_purchase, all_purchases, most_expensive, delete_purchase, find_purchase]
