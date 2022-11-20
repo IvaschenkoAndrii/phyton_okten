@@ -51,11 +51,11 @@ def notes():
             pass
 
     def most_expensive():
+        m = data[0]["price"]
         for i in range(len(data)):
-            m = data[0]["price"]
             if data[i]["price"] > m:
-                m = data[i]["price"]
-        print(m)
+                res = data[i]
+        print(f'{res["id"]} {res["name"]} {res["price"]}')
 
     def delete_purchase(id):
         del data[id]
