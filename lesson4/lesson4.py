@@ -22,7 +22,7 @@ import json
 
 from pip._internal.utils import models
 
-Purchase = TypedDict('Purchase', {'id': str, 'name': str, 'price': str})
+Purchase = TypedDict('Purchase', {'id': str, 'name': str, 'price': float})
 
 g = (i for i in range(5000000000))
 
@@ -55,7 +55,7 @@ def notes():
             m=data[i]["price"]
             if data[i]["price"]>m:
                 m = data[i]["price"]
-        print(f'{data[i]["id"]} {data[i]["name"]} {data[i]["price"]}')
+            print(f'{data[i]["id"]} {data[i]["name"]} {data[i]["price"]}')
 
 
     return [add_purchase, all_purchases, most_expensive]
@@ -76,7 +76,10 @@ while True:
         case '1':
             id = str(next(g))
             name = input('Введите название ')
-            price = int(input('Введите цену '))
+            try:
+                price = float(input('Введите цену '))
+            except  Exception as err:
+                print('Цена должна быть цифровым значением')
             purchase: Purchase = {'id': id, 'name': name, 'price': price}
             add(purchase)
 
