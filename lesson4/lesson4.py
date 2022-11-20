@@ -65,7 +65,6 @@ def notes():
                 print('Ничего не найдено')
 
     def most_expensive():
-
         try:
             m = data[0]['price']
             res={}
@@ -80,7 +79,12 @@ def notes():
 
 
     def delete_purchase(id):
-        del data[id]
+        del data[id-1]
+        try:
+            with open('purchases.json', 'w') as file:
+                json.dump(data, file)
+        except Exception as err:
+            print(err)
         return delete_purchase
 
     return [add_purchase, all_purchases, most_expensive, delete_purchase, find_purchase]
