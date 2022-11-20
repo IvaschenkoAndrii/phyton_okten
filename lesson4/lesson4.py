@@ -99,24 +99,19 @@ while True:
             purchase: Purchase = {'id': id, 'name': name, 'price': price}
             add(purchase)
 
-    match choice:
         case '2':
             all()
 
-    match choice:
         case '3':
             field = str(input('Введите строку для поиска '))
             find(field)
 
-    match choice:
         case '4':
             expensive()
 
-    match choice:
         case '5':
             id = int(input('Введите номер покупки '))
             delete(id)
 
-    match choice:
         case '6':
             break
