@@ -24,7 +24,7 @@ from pip._internal.utils import models
 
 Purchase = TypedDict('Purchase', {'id': str, 'name': str, 'price': float})
 
-g = (i for i in range(1,5000000000))
+g = (i for i in range(1, 5000000000))
 
 
 def notes():
@@ -64,14 +64,15 @@ def notes():
             else:
                 print('Ничего не найдено')
 
-
     def most_expensive():
-        m = data[0]["price"]
+        m = data[0]['price']
+        res={}
         for i in range(len(data)):
-            if data[i]["price"] > m:
-                res = data[i]
-                print('res')
-        # print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
+            if data[i]['price'] > m:
+                m = data[i]['price']
+                res=data[i]
+        print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
+
 
     def delete_purchase(id):
         del data[id]
