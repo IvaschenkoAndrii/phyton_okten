@@ -61,6 +61,8 @@ def notes():
             elif data[i]["price"] == float(field):
                 res = data[i]
                 print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
+            else:
+                print('Ничего не найдено')
 
 
     def most_expensive():
@@ -68,7 +70,8 @@ def notes():
         for i in range(len(data)):
             if data[i]["price"] > m:
                 res = data[i]
-        print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
+                print('res')
+        # print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
 
     def delete_purchase(id):
         del data[id]
