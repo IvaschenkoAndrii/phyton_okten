@@ -24,7 +24,7 @@ from pip._internal.utils import models
 
 Purchase = TypedDict('Purchase', {'id': str, 'name': str, 'price': float})
 
-g = (i for i in range(5000000000))
+g = (i for i in range(1,5000000000))
 
 
 def notes():
@@ -46,25 +46,38 @@ def notes():
             with open('purchases.json', 'r') as file:
                 purchase: Purchase = json.load(file)
                 for i in range(len(data)):
-                    print(f'{data[i]["id"]} {data[i]["name"]} {data[i]["price"]}')
+                    print(f'{data[i]["id"]}.  {data[i]["name"]} цена - {data[i]["price"]}')
         except (Exception,):
             pass
+
+    def find_purchase(field):
+        for i in range(len(data)):
+            if data[i]["id"] == field:
+                res = data[i]
+                print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
+            elif data[i]["name"] == field:
+                res = data[i]
+                print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
+            elif data[i]["price"] == float(field):
+                res = data[i]
+                print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
+
 
     def most_expensive():
         m = data[0]["price"]
         for i in range(len(data)):
             if data[i]["price"] > m:
                 res = data[i]
-        print(f'{res["id"]} {res["name"]} {res["price"]}')
+        print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
 
     def delete_purchase(id):
         del data[id]
         return delete_purchase
 
-    return [add_purchase, all_purchases, most_expensive, delete_purchase]
+    return [add_purchase, all_purchases, most_expensive, delete_purchase, find_purchase]
 
 
-add, all, expensive, delete = notes()
+add, all, expensive, delete, find = notes()
 
 while True:
     print('1. Добавить в список ')
@@ -91,12 +104,17 @@ while True:
             all()
 
     match choice:
+        case '3':
+            field = str(input('Введите строку для поиска '))
+            find(field)
+
+    match choice:
         case '4':
             expensive()
 
     match choice:
         case '5':
-            id=int(input('Введите номер покупки '))
+            id = int(input('Введите номер покупки '))
             delete(id)
 
     match choice:
