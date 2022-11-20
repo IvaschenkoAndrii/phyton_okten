@@ -20,8 +20,6 @@
 from typing import TypedDict
 import json
 
-from pip._internal.utils import models
-
 Purchase = TypedDict('Purchase', {'id': str, 'name': str, 'price': float})
 
 g = (i for i in range(1, 5000000000))
