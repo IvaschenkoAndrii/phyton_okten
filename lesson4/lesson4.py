@@ -74,7 +74,6 @@ def notes():
         print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
 
 
-
     def delete_purchase(id):
         del data[id]
         return delete_purchase
