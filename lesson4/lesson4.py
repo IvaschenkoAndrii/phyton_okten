@@ -56,11 +56,11 @@ def notes():
             elif data[i]["name"] == field:
                 res = data[i]
                 print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
-            elif data[i]["price"] == float(field):
+            elif str(data[i]["price"]) == field:
                 res = data[i]
                 print(f'{res["id"]}.   {res["name"]} цена - {res["price"]}')
-            else:
-                print('Ничего не найдено')
+        # else:
+        #     print('Ничего не найдено')
 
     def most_expensive():
         try:
