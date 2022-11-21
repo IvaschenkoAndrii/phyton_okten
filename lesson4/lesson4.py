@@ -30,7 +30,6 @@ def gen():
         count += 1
         yield count
 
-
 g=gen()
 
 def notes():
