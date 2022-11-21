@@ -1,8 +1,9 @@
 # try:
 #     with open ('emails.txt') as file_read, open ('emails_gmail.txt', mode='w') as file_write:
 #         for line in file_read:
-#             if line.endswith('@gmail.com\n'):
-#                 file_write.write(line)
+#             line1= line[35:]
+#             if line1.endswith('@gmail.com\n'):
+#                 file_write.write(line1)
 # except Exception as err:
 #     print(err)
 
@@ -22,8 +23,15 @@ import json
 
 Purchase = TypedDict('Purchase', {'id': str, 'name': str, 'price': float})
 
-g = (i for i in range(1, 5000000000))
+# g = (i for i in range(1, 5000000000))
+def gen():
+    count = 0
+    while True:
+        count += 1
+        yield count
 
+
+g=gen()
 
 def notes():
     data = []
